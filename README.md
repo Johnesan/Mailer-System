@@ -1,2 +1,2 @@
 # Mailer
-This is a Mailer system that can be used to send mails to clients
+This is a Mailer system that can be used to send mails to clients. I made use of the gmail smtp server. To configure the smtp client, open the MessageService.cs class and replace the _email_ , _password_ and _dispName_ fields with your own details. Also, ensure to enable "Connection to insecure apps in your gmail account settings". Otherwise, put in the smtp hosting details of whatever smtp server you intend using.
