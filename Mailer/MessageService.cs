@@ -15,11 +15,11 @@ namespace Mailer
         {
             try
             {
-                var _email = "jcoool40@gmail.com";
+                var _email = "Put-In-Your-Email-Address-Here";
+                var _password = "Put-In-Your-Password-Here";
 
-                //Password in Web.config
-                //var _password = ConfigurationManager.AppSettings["EmailPassword"];
-                var _dispName = "John";
+                
+                var _dispName = "Your-Name-Here";
                 MailMessage myMessage = new MailMessage();
                 myMessage.To.Add(email);
                 myMessage.From = new MailAddress(_email, _dispName);
@@ -33,7 +33,7 @@ namespace Mailer
                     smtp.Host = "smtp.gmail.com";
                     smtp.Port = 587;
                     smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential("jcoool40@gmail.com", "donjohn39");
+                    smtp.Credentials = new NetworkCredential(_email, _password);
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     //smtp.SendCompleted += (s, e) => { smtp.Dispose(); };
                      smtp.Send (myMessage);

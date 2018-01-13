@@ -41,7 +41,7 @@ namespace Mailer.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendMail(Receiver receiver)
         {
-            var message = await GetEmailTemplate(ViewBag.Template);
+            var message = await GetEmailTemplate("WelcomeTemplate");
             message = message.Replace("@ViewBag.FirstName", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(receiver.FirstName));
             MessageService.SendEmailAsync(receiver.EmailAddress, "Welcome", message);
             return View("EmailSent");
@@ -56,12 +56,12 @@ namespace Mailer.Controllers
 
             foreach (var receiver in Receivers)
             {
-                var message = await GetEmailTemplate(ViewBag.Template);
+                var message = await GetEmailTemplate("WelcomeTemplate");
                 message = message.Replace("@ViewBag.FirstName", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(receiver.FirstName));
                 MessageService.SendEmailAsync(receiver.EmailAddress, "Welcome", message);
                 return View("EmailSent");
             }
-            return new HttpNotFoundResult("Couldn't send Messages")
+            return new HttpNotFoundResult("Couldn't send Messages");
 
         }
 
